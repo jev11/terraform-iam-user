@@ -4,12 +4,6 @@ resource "aws_iam_user" "user" {
   force_destroy = true
 }
 
-# resource "aws_iam_user_login_profile" "user_profile" {
-#   count   = "${var.createPassword}"
-#   user    = "${aws_iam_user.user.name}"
-#   pgp_key = "keybase:${var.keybase}"
-# }
-
 resource "aws_iam_group" "group" {
   count = "${var.group_name != "" ? 1 : 0 }"
   name  = "${var.group_name}"
